@@ -114,24 +114,24 @@ searchInput.addEventListener('keyup', () => {
   }, 300);
 });
 
-document.querySelectorAll("tr[data-image]").forEach((row) => {
+document.querySelectorAll(".hover-game").forEach((cell) => {
   const previewBox = document.getElementById("preview");
   const img = previewBox.querySelector("img");
 
-  row.addEventListener("mouseover", (e) => {
-    const imgUrl = row.getAttribute("data-image");
+  cell.addEventListener("mouseover", (e) => {
+    const imgUrl = cell.getAttribute("data-image");
     if (imgUrl) {
       img.src = imgUrl;
       previewBox.style.display = "block";
     }
   });
 
-  row.addEventListener("mousemove", (e) => {
+  cell.addEventListener("mousemove", (e) => {
     previewBox.style.top = `${e.pageY + 10}px`;
     previewBox.style.left = `${e.pageX + 10}px`;
   });
 
-  row.addEventListener("mouseout", () => {
+  cell.addEventListener("mouseout", () => {
     previewBox.style.display = "none";
   });
 });
