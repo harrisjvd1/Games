@@ -70,9 +70,9 @@ button {
 }
 
 body {
-  background: linear-gradient(-45deg, #F0F4F8, #E3F2FD, #E8F5E9, #FFFDE7);
+  background: linear-gradient(-45deg, #6a11cb, #2575fc, #43cea2, #f7971e);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 5s ease-in-out infinite;
 }
 
 @keyframes gradient {
