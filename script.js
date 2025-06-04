@@ -55,20 +55,29 @@ function filterTable() {
   const publisherFilter = document.getElementById("publisherFilter");
   const table = document.getElementById("movieTable");
 
-  publisherFilter.addEventListener("change", () => {
-    const selected = publisherFilter.value.toLowerCase();
-    const rows = table.tBodies[0].rows;
+publisherFilter.addEventListener("change", () => {
+  const selected = publisherFilter.value.toLowerCase();
+  const rows = table.tBodies[0].rows;
 
-    for (let row of rows) {
-      const publisherCell = row.cells[4].textContent.toLowerCase();
+  for (let row of rows) {
+    const publisherCell = row.cells[4].textContent.toLowerCase();
 
-      if (selected === "all" || publisherCell === selected) {
-        row.style.display = "";
-      } else {
-        row.style.display = "none";
-      }
+    if (selected === "all" || publisherCell === selected) {
+      // Show row immediately, remove fade
+      row.classList.remove("fade-out");
+      row.style.display = "";
+    } else {
+      // Animate fade out
+      row.classList.add("fade-out");
+      setTimeout(() => {
+        if (row.classList.contains("fade-out")) {
+          row.style.display = "none";
+        }
+      }, 300);
     }
-  });
+  }
+});
+
 
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY;
