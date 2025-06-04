@@ -55,7 +55,6 @@ publisherFilter.addEventListener("change", () => {
   }
 });
 
-
 window.addEventListener("scroll", () => {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -68,11 +67,3 @@ window.addEventListener("scroll", () => {
 
   document.body.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 });
-
-body {
-  background-color; hsl(220, 40%, 94%);
-  background-image; url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='20' fill='%23dbeafe'/%3E%3C/svg%3E");
-  background-repeat; repeat;
-  background-size; 200px 200px;
-  transition: background-color 0.3s ease;
-}
