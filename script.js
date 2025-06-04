@@ -1,22 +1,36 @@
-function sortTable(colIndex) {
+function sortTable(columnIndex) {
   const table = document.getElementById("movieTable");
-  const tbody = table.tBodies[0];
-  const rows = Array.from(tbody.rows);
-
-  const isSize = colIndex === 1;
+  const rows = Array.from(table.rows).slice(1);
+  const isNumeric = columnIndex === 1;
+  const direction = table.getAttribute("data-sort-dir") === "asc" ? -1 : 1;
 
   rows.sort((a, b) => {
-    let aText = a.cells[colIndex].innerText.toLowerCase();
-    let bText = b.cells[colIndex].innerText.toLowerCase();
+    const aText = a.cells[columnIndex].textContent.trim();
+    const bText = b.cells[columnIndex].textContent.trim();
 
-    if (isSize) {
-      const parseSize = s => parseFloat(s) * (s.includes('gb') ? 1000 : 1);
-      aText = parseSize(aText);
-      bText = parseSize(bText);
+    if (isNumeric) {
+      const aSize = parseFloat(aText) * (aText.includes("GB") ? 1024 : 1);
+      const bSize = parseFloat(bText) * (bText.includes("GB") ? 1024 : 1);
+      return (aSize - bSize) * direction;
     }
 
-    return aText > bText ? 1 : -1;
+    return aText.localeCompare(bText) * direction;
   });
 
-  rows.forEach(row => tbody.appendChild(row));
+  rows.forEach(row => table.tBodies[0].appendChild(row));
+  table.setAttribute("data-sort-dir", direction === 1 ? "asc" : "desc");
+}
+
+function filterTable() {
+  const input = document.getElementById("searchInput").value.toUpperCase();
+  const table = document.getElementById("movieTable");
+  const rows = table.getElementsByTagName("tr");
+
+  for (let i = 1; i < rows.length; i++) {
+    const gameName = rows[i].getElementsByTagName("td")[0];
+    if (gameName) {
+      const match = gameName.textContent.toUpperCase().includes(input);
+      rows[i].style.display = match ? "" : "none";
+    }
+  }
 }
