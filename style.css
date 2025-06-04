@@ -53,7 +53,18 @@ button {
   transition: background-color 0.3s;
 }
 
-.scroll-to-comments:hover,
-button:hover {
+.comment-button {
+  padding: 10px 15px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 1em 0;
+  transition: background-color 0.3s;
+}
+
+.comment-button:hover {
   background-color: #3730a3;
 }
