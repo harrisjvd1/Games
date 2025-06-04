@@ -28,19 +28,32 @@ function filterTable() {
   const rows = table.getElementsByTagName("tr");
 
   for (let i = 1; i < rows.length; i++) {
-    const gameName = rows[i].getElementsByTagName("td")[0];
-    if (gameName) {
-      const match = gameName.textContent.toUpperCase().includes(input);
+    const gameNameCell = rows[i].getElementsByTagName("td")[0];
+    if (gameNameCell) {
+      const originalText = gameNameCell.textContent;
+      const textUpper = originalText.toUpperCase();
+      const matchIndex = textUpper.indexOf(input);
 
-      if (match) {
+      if (input && matchIndex > -1) {
+        // Highlight matched part
+        const beforeMatch = originalText.slice(0, matchIndex);
+        const matchText = originalText.slice(matchIndex, matchIndex + input.length);
+        const afterMatch = originalText.slice(matchIndex + input.length);
+
+        gameNameCell.innerHTML = `${beforeMatch}<mark>${matchText}</mark>${afterMatch}`;
+
         // Show row immediately and remove fade-out if any
         rows[i].classList.remove("fade-out");
         rows[i].style.display = "";
+      } else if (!input) {
+        // No input: reset text and show row
+        gameNameCell.textContent = originalText;
+        rows[i].classList.remove("fade-out");
+        rows[i].style.display = "";
       } else {
-        // Animate fade-out before hiding
+        // No match: animate fade-out then hide row, reset text
+        gameNameCell.textContent = originalText;
         rows[i].classList.add("fade-out");
-
-        // Wait for the animation to finish (300ms) then hide the row
         setTimeout(() => {
           if (rows[i].classList.contains("fade-out")) {
             rows[i].style.display = "none";
