@@ -60,10 +60,8 @@ window.addEventListener("scroll", () => {
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   const scrollPercent = docHeight === 0 ? 0 : scrollTop / docHeight;
 
-  // Use a narrow hue range with high lightness for subtle effect
-  const hue = 220 + scrollPercent * 20;       // 220–240: soft blue to blue-gray
-  const saturation = 40;                      // muted tones
-  const lightness = 94 - scrollPercent * 10;  // 94% to 84%
+  const hue = 220 + scrollPercent * 10;         // 220–230 (cool blue tones)
+  const lightness = 94 - scrollPercent * 6;     // Subtle darkening
 
-  document.body.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  document.body.style.backgroundColor = `hsl(${hue}, 40%, ${lightness}%)`;
 });

@@ -1,94 +1,89 @@
+/* Base styles */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
   margin: 0;
-  padding: 20px;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: hsl(220, 40%, 94%);
+  color: #333;
+  transition: background-color 0.3s ease;
+  background-image: radial-gradient(circle at 1px 1px, #dbeafe 1px, transparent 0);
+  background-size: 100px 100px;
 }
 
+/* Header */
 h1 {
-  color: #4a4e69;
+  text-align: center;
+  color: #1e293b;
+  font-size: 2rem;
+  margin-bottom: 30px;
 }
 
+/* Inputs and dropdown */
 input, select {
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 1rem;
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 20px auto;
+  padding: 12px 14px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
 
+/* Table */
 table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  margin-top: 30px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
 }
 
 th, td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #ddd;
+  padding: 14px 16px;
+  text-align: left;
 }
 
 th {
-  background-color: #4a4e69;
+  background-color: #1e293b;
   color: white;
+  font-weight: 600;
   cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: #f9fafb;
 }
 
 tr:hover {
-  background-color: #f1f1f1;
+  background-color: #f1f5f9;
 }
 
-.scroll-to-comments,
-button {
-  padding: 10px 15px;
-  background-color: #4a4e69;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 1em 0;
-  transition: background-color 0.3s;
+a {
+  color: #2563eb;
+  text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
+/* Button */
 .comment-button {
-  padding: 10px 15px;
-  background-color: #4a4e69;
+  display: block;
+  margin: 40px auto;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #1e293b;
   color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  margin: 1em 0;
   transition: background-color 0.3s;
 }
 
 .comment-button:hover {
-  background-color: #4a4e69;
-}
-
-body {
-  background-color: hsl(210, 70%, 95%);
-  transition: background-color 0.2s linear;
-}
-
-
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-tbody tr:nth-child(odd) {
-  background-color: #f9f9f9;
-}
-
-body {
-  background-color: hsl(220, 40%, 94%);
-  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='20' fill='%23dbeafe'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  transition: background-color 0.3s ease;
+  background-color: #334155;
 }
