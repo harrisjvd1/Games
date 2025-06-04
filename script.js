@@ -42,10 +42,10 @@ function filterByPublisher() {
   const tr = table.getElementsByTagName("tr");
 
   for (let i = 1; i < tr.length; i++) {
-    const td = tr[i].getElementsByTagName("td")[4];
+    const td = tr[i].getElementsByTagName("td")[4]; // 5th column: Publisher
     if (td) {
-      const txtValue = td.textContent || td.innerText;
-      if (selected === "all" || txtValue.trim().toLowerCase() === selected) {
+      const txtValue = (td.textContent || td.innerText).trim().toLowerCase();
+      if (selected === "all" || txtValue === selected) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
