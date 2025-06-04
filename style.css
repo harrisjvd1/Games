@@ -70,7 +70,7 @@ button {
 }
 
 body {
-  background: linear-gradient(-45deg, #f4f4f9, #e0eafc, #cfdef3, #f4f4f9);
+  background: linear-gradient(-45deg, #F0F4F8, #E3F2FD, #E8F5E9, #FFFDE7);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
@@ -79,4 +79,15 @@ body {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+
+table {
+  width: 100%;
+  overflow-x: auto;
+  display: block;
 }
