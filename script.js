@@ -54,3 +54,16 @@ publisherFilter.addEventListener("change", () => {
     }
   }
 });
+
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+  const scrollPercent = docHeight === 0 ? 0 : scrollTop / docHeight;
+
+  const hue = 210 + scrollPercent * 80;
+  const lightness = 95 - scrollPercent * 20;
+
+  document.body.style.backgroundColor = `hsl(${hue}, 70%, ${lightness}%)`;
+});

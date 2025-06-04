@@ -70,10 +70,10 @@ button {
 }
 
 body {
-  background: linear-gradient(-45deg, #6a11cb, #2575fc, #43cea2, #f7971e);
-  background-size: 400% 400%;
-  animation: gradient 5s ease-in-out infinite;
+  background-color: hsl(210, 70%, 95%);
+  transition: background-color 0.2s linear;
 }
+
 
 @keyframes gradient {
   0% { background-position: 0% 50%; }
