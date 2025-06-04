@@ -67,6 +67,12 @@ a:hover {
 
 
 tr:hover {
-  background-color: #e8f4ff;
+  background-color: rgba(255, 255, 255, 0.1);
   transition: background-color 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #23a6d5;
+  box-shadow: 0 0 5px rgba(35, 166, 213, 0.5);
 }
