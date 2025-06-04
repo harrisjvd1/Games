@@ -30,6 +30,16 @@ input, select {
   border-radius: 8px;
 }
 
+label {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 8px auto;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+
 /* Table */
 table {
   width: 100%;
