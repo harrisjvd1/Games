@@ -1,3 +1,4 @@
+// Filters by size
 function sortTable(columnIndex) {
   const table = document.getElementById("movieTable");
   const rows = Array.from(table.rows).slice(1);
@@ -20,7 +21,7 @@ function sortTable(columnIndex) {
   rows.forEach(row => table.tBodies[0].appendChild(row));
   table.setAttribute("data-sort-dir", direction === 1 ? "asc" : "desc");
 }
-
+// Filters Alphabetically
 function filterTable() {
   const input = document.getElementById("searchInput").value.toUpperCase();
   const table = document.getElementById("movieTable");
@@ -34,3 +35,22 @@ function filterTable() {
     }
   }
 }
+
+// For the dropdown menu
+const publisherFilter = document.getElementById("publisherFilter");
+const table = document.getElementById("movieTable");
+
+publisherFilter.addEventListener("change", () => {
+  const selected = publisherFilter.value.toLowerCase();
+  const rows = table.tBodies[0].rows;
+
+  for (let row of rows) {
+    const publisherCell = row.cells[4].textContent.toLowerCase();
+
+    if (selected === "all" || publisherCell === selected) {
+      row.style.display = "";
+    } else {
+      row.style.display = "none";
+    }
+  }
+});
