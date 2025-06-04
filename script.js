@@ -59,11 +59,20 @@ publisherFilter.addEventListener("change", () => {
 window.addEventListener("scroll", () => {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-
   const scrollPercent = docHeight === 0 ? 0 : scrollTop / docHeight;
 
-  const hue = 210 + scrollPercent * 80;
-  const lightness = 95 - scrollPercent * 20;
+  // Use a narrow hue range with high lightness for subtle effect
+  const hue = 220 + scrollPercent * 20;       // 220–240: soft blue to blue-gray
+  const saturation = 40;                      // muted tones
+  const lightness = 94 - scrollPercent * 10;  // 94% to 84%
 
-  document.body.style.backgroundColor = `hsl(${hue}, 70%, ${lightness}%)`;
+  document.body.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 });
+
+body {
+  background-color: hsl(220, 40%, 94%);
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='20' fill='%23dbeafe'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  transition: background-color 0.3s ease;
+}
