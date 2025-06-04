@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Game Download Links</title>
   <link rel="stylesheet" href="style.css" />
+  <button onclick="document.getElementById('comments').scrollIntoView({ behavior: 'smooth' });">
+  💬 Go to Comments
 </head>
 <body>
   <h1>🎮 Games</h1> 
@@ -33,8 +35,6 @@
     <option value="Capcom">Capcom</option>
     <option value="Misc">Misc</option>
   </select>
-  <button onclick="document.getElementById('comments').scrollIntoView({ behavior: 'smooth' });">
-  💬 Go to Comments
   <table id="movieTable">
     <thead>
       <tr>
@@ -349,6 +349,7 @@
       </tr>
     </tbody>
   </table>
+
 <div id="comments">
 <script src="https://giscus.app/client.js"
         data-repo="harrisjvd1/Games"
