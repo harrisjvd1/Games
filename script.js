@@ -89,3 +89,14 @@ publisherFilter.addEventListener("change", () => {
 
     document.body.style.backgroundColor = `hsl(${hue}, 40%, ${lightness}%)`;
   });
+
+  
+let debounceTimer;
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener('keyup', () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => {
+    filterTable();
+  }, 300);
+});
