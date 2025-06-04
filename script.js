@@ -22,19 +22,34 @@
     table.setAttribute("data-sort-dir", direction === 1 ? "asc" : "desc");
   }
   // Filters Alphabetically
-  function filterTable() {
-    const input = document.getElementById("searchInput").value.toUpperCase();
-    const table = document.getElementById("movieTable");
-    const rows = table.getElementsByTagName("tr");
+function filterTable() {
+  const input = document.getElementById("searchInput").value.toUpperCase();
+  const table = document.getElementById("movieTable");
+  const rows = table.getElementsByTagName("tr");
 
-    for (let i = 1; i < rows.length; i++) {
-      const gameName = rows[i].getElementsByTagName("td")[0];
-      if (gameName) {
-        const match = gameName.textContent.toUpperCase().includes(input);
-        rows[i].style.display = match ? "" : "none";
+  for (let i = 1; i < rows.length; i++) {
+    const gameName = rows[i].getElementsByTagName("td")[0];
+    if (gameName) {
+      const match = gameName.textContent.toUpperCase().includes(input);
+
+      if (match) {
+        // Show row immediately and remove fade-out if any
+        rows[i].classList.remove("fade-out");
+        rows[i].style.display = "";
+      } else {
+        // Animate fade-out before hiding
+        rows[i].classList.add("fade-out");
+
+        // Wait for the animation to finish (300ms) then hide the row
+        setTimeout(() => {
+          if (rows[i].classList.contains("fade-out")) {
+            rows[i].style.display = "none";
+          }
+        }, 300);
       }
     }
   }
+}
 
   // For the dropdown menu
   const publisherFilter = document.getElementById("publisherFilter");
