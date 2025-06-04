@@ -59,11 +59,11 @@ function filterByPublisherInput() {
   const table = document.getElementById("movieTable");
   const rows = table.getElementsByTagName("tr");
 
-  for (let i = 1; i < rows.length; i++) { // Skip header
-    const publisherCell = rows[i].getElementsByTagName("td")[4];
+  for (let i = 1; i < rows.length; i++) {
+    const publisherCell = rows[i].getElementsByTagName("td")[4]; // 5th column (index 4)
     if (publisherCell) {
-      const publisher = publisherCell.textContent.toLowerCase();
-      if (publisher.startsWith(input)) {
+      const publisherText = publisherCell.textContent || publisherCell.innerText;
+      if (publisherText.toLowerCase().startsWith(input)) {
         rows[i].style.display = "";
       } else {
         rows[i].style.display = "none";
