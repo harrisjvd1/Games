@@ -43,7 +43,7 @@ tr:hover {
 .scroll-to-comments,
 button {
   padding: 10px 15px;
-  background-color: #4f46e5;
+  background-color: #4a4e69;
   color: white;
   border: none;
   border-radius: 6px;
@@ -55,7 +55,7 @@ button {
 
 .comment-button {
   padding: 10px 15px;
-  background-color: #4f46e5;
+  background-color: #4a4e69;
   color: white;
   border: none;
   border-radius: 6px;
