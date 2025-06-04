@@ -35,35 +35,44 @@ function filterTable() {
   }
 }
 
-function filterByPublisher() {
-  const dropdown = document.getElementById("publisherFilter");
-  const selected = dropdown.value.trim().toLowerCase();
-  const table = document.getElementById("movieTable");
-  const tr = table.getElementsByTagName("tr");
+function filterTableByPublisher() {
+  const publisherInput = document.getElementById("publisherSearch").value.toLowerCase().trim();
+  const publisherDropdown = document.getElementById("publisherFilter");
+  const dropdownValue = publisherDropdown.value.toLowerCase();
 
-  for (let i = 1; i < tr.length; i++) {
-    const td = tr[i].getElementsByTagName("td")[4]; // 5th column: Publisher
-    if (td) {
-      const txtValue = (td.textContent || td.innerText).trim().toLowerCase();
-      if (selected === "all" || txtValue === selected) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+  // Sync dropdown with input
+  if (publisherInput !== dropdownValue) {
+    // If input matches one of the dropdown options, select it
+    let foundMatch = false;
+    for (let i = 0; i < publisherDropdown.options.length; i++) {
+      if (publisherDropdown.options[i].value.toLowerCase() === publisherInput) {
+        publisherDropdown.selectedIndex = i;
+        foundMatch = true;
+        break;
       }
     }
+    if (!foundMatch) {
+      publisherDropdown.selectedIndex = 0; // 'All'
+    }
   }
-}
 
-function filterByPublisherInput() {
-  const input = document.getElementById("publisherSearch").value.toLowerCase();
+  // Sync input with dropdown (if dropdown changed)
+  if (dropdownValue !== publisherInput) {
+    document.getElementById("publisherSearch").value = dropdownValue === 'all' ? '' : publisherDropdown.options[publisherDropdown.selectedIndex].value;
+  }
+
   const table = document.getElementById("movieTable");
   const rows = table.getElementsByTagName("tr");
 
   for (let i = 1; i < rows.length; i++) {
-    const publisherCell = rows[i].getElementsByTagName("td")[4]; // 5th column (index 4)
+    const publisherCell = rows[i].getElementsByTagName("td")[4]; // Publisher column
     if (publisherCell) {
-      const publisherText = publisherCell.textContent || publisherCell.innerText;
-      if (publisherText.toLowerCase().startsWith(input)) {
+      const publisherText = publisherCell.textContent.toLowerCase().trim();
+      if (
+        dropdownValue === 'all' ||
+        publisherText.startsWith(publisherInput) ||
+        publisherText === dropdownValue
+      ) {
         rows[i].style.display = "";
       } else {
         rows[i].style.display = "none";
@@ -71,3 +80,9 @@ function filterByPublisherInput() {
     }
   }
 }
+
+// Attach event listeners to input and dropdown after the DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById("publisherSearch").addEventListener("keyup", filterTableByPublisher);
+  document.getElementById("publisherFilter").addEventListener("change", filterTableByPublisher);
+});
