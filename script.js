@@ -34,3 +34,22 @@ function filterTable() {
     }
   }
 }
+
+function filterByPublisher() {
+  const dropdown = document.getElementById("publisherFilter");
+  const selected = dropdown.value.toLowerCase();
+  const table = document.getElementById("movieTable");
+  const tr = table.getElementsByTagName("tr");
+
+  for (let i = 1; i < tr.length; i++) {
+    const td = tr[i].getElementsByTagName("td")[2]; // Publisher column
+    if (td) {
+      const txtValue = td.textContent || td.innerText;
+      if (selected === "all" || txtValue.toLowerCase() === selected) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
