@@ -114,11 +114,11 @@ searchInput.addEventListener('keyup', () => {
   }, 300);
 });
 
-document.querySelectorAll(".hover-game").forEach((cell) => {
+document.querySelectorAll("td.hover-game").forEach((cell) => {
   const previewBox = document.getElementById("preview");
   const img = previewBox.querySelector("img");
 
-  cell.addEventListener("mouseover", (e) => {
+  cell.addEventListener("mouseover", () => {
     const imgUrl = cell.getAttribute("data-image");
     if (imgUrl) {
       img.src = imgUrl;
