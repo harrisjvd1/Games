@@ -7,7 +7,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <button class="comment-button" onclick="document.getElementById('comments').scrollIntoView({ behavior: 'smooth' });">
+  <svg class="background-svg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blobGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#blobGradient)" d="M566.5,574.5Q507,649,414,668.5Q321,688,257,628Q193,568,159.5,484Q126,400,181,317.5Q236,235,313,186.5Q390,138,472.5,181.5Q555,225,598.5,312.5Q642,400,566.5,574.5Z" />
+ </svg>
+  
+ <button class="comment-button" onclick="document.getElementById('comments').scrollIntoView({ behavior: 'smooth' });">
   💬 Go to Comments
 </button>
   <h1>🎮 Games</h1> 
